@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - Nanbin工作室</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        success: '#00B42A',
+                        danger: '#F53F3F',
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .nav-link {
+                @apply px-4 py-2 text-gray-700 hover:text-primary transition-colors duration-200;
+            }
+            .form-input {
+                @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition;
+            }
+            .form-button {
+                @apply w-full px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary flex items-center">
+                        <i class="fa-solid fa-code mr-2"></i>
+                        Nanbin工作室
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-2">
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="search-input"
+                            placeholder="搜索内容..." 
+                            class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary w-64"
+                        >
+                        <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    
+                    <a href="blacklist.html" class="nav-link"><i class="fa-solid fa-ban mr-1"></i>黑名单</a>
+                    <a href="index.html" class="nav-link"><i class="fa-solid fa-download mr-1"></i>下载</a>
+                    <a href="login.html" class="nav-link font-medium text-primary"><i class="fa-solid fa-user mr-1"></i>登录</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="container mx-auto px-4 py-2">
+                <div class="relative my-2">
+                    <input 
+                        type="text" 
+                        id="mobile-search-input"
+                        placeholder="搜索内容..." 
+                        class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary w-full"
+                    >
+                    <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+                
+                <div class="flex flex-col space-y-1 py-2">
+                    <a href="blacklist.html" class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded"><i class="fa-solid fa-ban mr-2"></i>黑名单</a>
+                    <a href="index.html" class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded"><i class="fa-solid fa-download mr-2"></i>下载</a>
+                    <a href="login.html" class="px-4 py-2 text-primary hover:bg-gray-100 rounded font-medium"><i class="fa-solid fa-user mr-2"></i>登录</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-10">
+        <div class="container mx-auto px-4 max-w-md">
+            <div class="bg-white rounded-xl shadow p-6 mb-4">
+                <div class="flex border-b border-gray-200 mb-6">
+                    <button id="login-tab" class="flex-1 py-2 text-primary border-b-2 border-primary font-medium">
+                        <i class="fa-solid fa-right-to-bracket mr-1"></i>登录
+                    </button>
+                    <button id="register-tab" class="flex-1 py-2 text-gray-500 hover:text-primary">
+                        <i class="fa-solid fa-user-plus mr-1"></i>注册
+                    </button>
+                </div>
+                
+                <div id="message" class="hidden mb-4 py-2 px-3 rounded-lg text-center"></div>
+                
+                <div id="login-form">
+                    <div class="mb-4">
+                        <label for="login-username" class="block text-gray-700 text-sm font-medium mb-2">用户名</label>
+                        <input 
+                            type="text" 
+                            id="login-username" 
+                            class="form-input" 
+                            placeholder="请输入用户名"
+                            required
+                        >
+                    </div>
+                    <div class="mb-6">
+                        <label for="login-password" class="block text-gray-700 text-sm font-medium mb-2">密码</label>
+                        <div class="relative">
+                            <input 
+                                type="password" 
+                                id="login-password" 
+                                class="form-input pr-10" 
+                                placeholder="请输入8位密码"
+                                minlength="8"
+                                maxlength="8"
+                                required
+                            >
+                            <button type="button" id="toggle-login-pwd" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
+                                <i class="fa-solid fa-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="login-btn" class="form-button bg-primary text-white hover:bg-primary/90">
+                        <i class="fa-solid fa-sign-in-alt mr-1"></i>登录
+                    </button>
+                </div>
+                
+                <div id="register-form" class="hidden">
+                    <div class="mb-4">
+                        <label for="reg-username" class="block text-gray-700 text-sm font-medium mb-2">用户名</label>
+                        <input 
+                            type="text" 
+                            id="reg-username" 
+                            class="form-input" 
+                            placeholder="请设置用户名"
+                            required
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <label for="reg-password" class="block text-gray-700 text-sm font-medium mb-2">密码（8位）</label>
+                        <div class="relative">
+                            <input 
+                                type="password" 
+                                id="reg-password" 
+                                class="form-input pr-10" 
+                                placeholder="请设置8位密码"
+                                minlength="8"
+                                maxlength="8"
+                                required
+                            >
+                            <button type="button" id="toggle-reg-pwd" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
+                                <i class="fa-solid fa-eye-slash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="reg-confirm-pwd" class="block text-gray-700 text-sm font-medium mb-2">确认密码</label>
+                        <input 
+                            type="password" 
+                            id="reg-confirm-pwd" 
+                            class="form-input" 
+                            placeholder="请再次输入密码"
+                            minlength="8"
+                            maxlength="8"
+                            required
+                        >
+                    </div>
+                    <button id="register-btn" class="form-button bg-success text-white hover:bg-success/90">
+                        <i class="fa-solid fa-user-check mr-1"></i>注册
+                    </button>
+                </div>
+            </div>
+            
+            <div id="login-success" class="hidden bg-white rounded-xl shadow p-6 text-center">
+                <div class="text-success text-4xl mb-4">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2" id="welcome-text">登录成功！</h3>
+                <p class="text-gray-600 mb-4">欢迎回来，<span id="user-name" class="font-medium text-primary"></span></p>
+                <a href="index.html" class="inline-block bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                    <i class="fa-solid fa-house mr-1"></i>返回首页
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-10">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">&copy; 2026 Nanbin工作室 版权所有</p>
+            <p class="text-gray-400 text-sm">
+                <a href="blacklist.html" class="hover:text-danger transition-colors duration-200">黑名单</a> | 
+                <a href="index.html" class="hover:text-primary transition-colors duration-200">下载中心</a> | 
+                <a href="login.html" class="hover:text-primary transition-colors duration-200">用户登录</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function handleSearch(inputId) {
+            const input = document.getElementById(inputId);
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && input.value.trim()) {
+                    const searchUrl = `https://cn.bing.com/search?q=${encodeURIComponent(input.value.trim())}`;
+                    window.open(searchUrl, '_blank');
+                    input.value = '';
+                }
+            });
+        }
+        handleSearch('search-input');
+        handleSearch('mobile-search-input');
+
+        function base64Encode(str) {
+            return btoa(unescape(encodeURIComponent(str)));
+        }
+        
+        function base64Decode(str) {
+            return decodeURIComponent(escape(atob(str)));
+        }
+
+        async function readLoginCSV() {
+            try {
+                const response = await fetch('login.csv');
+                if (!response.ok) {
+                    return [
+                        { username: 'U0FETFJFSUg=', password: 'TGl*MjAyMTIy' }
+                    ];
+                }
+                const csvText = await response.text();
+                const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== '');
+                const data = [];
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const [username, password] = lines[i].split(',').map(item => item.trim());
+                    if (username && password) {
+                        data.push({ username, password });
+                    }
+                }
+                return data;
+            } catch (error) {
+                return [
+                    { username: 'U0FETFJFSUg=', password: 'TGl*MjAyMTIy' }
+                ];
+            }
+        }
+
+        async function writeLoginCSV(username, password) {
+            try {
+                const existingData = await readLoginCSV();
+                const encodedUser = base64Encode(username);
+                const encodedPwd = base64Encode(password);
+                
+                const isExist = existingData.some(item => base64Decode(item.username) === username);
+                if (isExist) {
+                    return { success: false, message: '用户名已存在！' };
+                }
+                
+                let csvContent = '用户名,密码\n';
+                existingData.forEach(item => {
+                    csvContent += `${item.username},${item.password}\n`;
+                });
+                csvContent += `${encodedUser},${encodedPwd}\n`;
+                
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'login.csv');
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                return { success: true, message: '注册成功！请替换原有login.csv文件' };
+            } catch (error) {
+                console.error('写入CSV失败:', error);
+                return { success: false, message: '注册失败：' + error.message };
+            }
+        }
+
+        function showMessage(text, type = 'error') {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.classList.remove('hidden', 'bg-success/10', 'text-success', 'bg-danger/10', 'text-danger');
+            
+            if (type === 'success') {
+                messageEl.classList.add('bg-success/10', 'text-success');
+            } else {
+                messageEl.classList.add('bg-danger/10', 'text-danger');
+            }
+            
+            setTimeout(() => {
+                messageEl.classList.add('hidden');
+            }, 3000);
+        }
+
+        function togglePassword(inputId, btnId) {
+            const input = document.getElementById(inputId);
+            const btn = document.getElementById(btnId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+            } else {
+                input.type = 'password';
+                btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+            }
+        }
+
+        async function login() {
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+            
+            if (!username || !password) {
+                showMessage('用户名和密码不能为空！');
+                return;
+            }
+            
+            if (password.length !== 8) {
+                showMessage('密码必须为8位！');
+                return;
+            }
+            
+            const userData = await readLoginCSV();
+            const encodedUser = base64Encode(username);
+            const encodedPwd = base64Encode(password);
+            
+            const user = userData.find(item => item.username === encodedUser && item.password === encodedPwd);
+            if (user) {
+                localStorage.setItem('isLogin', 'true');
+                localStorage.setItem('username', username);
+                
+                if (username === 'SADLIEH') {
+                    window.location.href = 'admin.html';
+                } else {
+                    document.getElementById('login-form').classList.add('hidden');
+                    document.getElementById('register-form').classList.add('hidden');
+                    document.getElementById('login-success').classList.remove('hidden');
+                    document.getElementById('user-name').textContent = username;
+                    document.getElementById('welcome-text').textContent = '登录成功！';
+                }
+            } else {
+                showMessage('用户名或密码错误！');
+            }
+        }
+
+        async function register() {
+            const username = document.getElementById('reg-username').value.trim();
+            const password = document.getElementById('reg-password').value.trim();
+            const confirmPwd = document.getElementById('reg-confirm-pwd').value.trim();
+            
+            if (!username || !password || !confirmPwd) {
+                showMessage('所有字段不能为空！');
+                return;
+            }
+            
+            if (password.length !== 8) {
+                showMessage('密码必须为8位！');
+                return;
+            }
+            
+            if (password !== confirmPwd) {
+                showMessage('两次输入的密码不一致！');
+                return;
+            }
+            
+            const result = await writeLoginCSV(username, password);
+            showMessage(result.message, result.success ? 'success' : 'error');
+            
+            if (result.success) {
+                setTimeout(() => {
+                    switchTab('login');
+                    document.getElementById('reg-username').value = '';
+                    document.getElementById('reg-password').value = '';
+                    document.getElementById('reg-confirm-pwd').value = '';
+                }, 2000);
+            }
+        }
+
+        function switchTab(type) {
+            const loginTab = document.getElementById('login-tab');
+            const registerTab = document.getElementById('register-tab');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            
+            if (type === 'login') {
+                loginTab.classList.add('text-primary', 'border-b-2', 'border-primary', 'font-medium');
+                loginTab.classList.remove('text-gray-500');
+                registerTab.classList.add('text-gray-500');
+                registerTab.classList.remove('text-primary', 'border-b-2', 'border-primary', 'font-medium');
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                registerTab.classList.add('text-primary', 'border-b-2', 'border-primary', 'font-medium');
+                registerTab.classList.remove('text-gray-500');
+                loginTab.classList.add('text-gray-500');
+                loginTab.classList.remove('text-primary', 'border-b-2', 'border-primary', 'font-medium');
+                registerForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+            }
+            document.getElementById('message').classList.add('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('login-tab').addEventListener('click', () => switchTab('login'));
+            document.getElementById('register-tab').addEventListener('click', () => switchTab('register'));
+            
+            document.getElementById('toggle-login-pwd').addEventListener('click', () => togglePassword('login-password', 'toggle-login-pwd'));
+            document.getElementById('toggle-reg-pwd').addEventListener('click', () => togglePassword('reg-password', 'toggle-reg-pwd'));
+            
+            document.getElementById('login-btn').addEventListener('click', login);
+            document.getElementById('register-btn').addEventListener('click', register);
+            
+            document.getElementById('login-password').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') login();
+            });
+            document.getElementById('reg-confirm-pwd').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') register();
+            });
+            
+            if (localStorage.getItem('isLogin') === 'true') {
+                document.getElementById('login-form').classList.add('hidden');
+                document.getElementById('register-form').classList.add('hidden');
+                document.getElementById('login-success').classList.remove('hidden');
+                document.getElementById('user-name').textContent = localStorage.getItem('username') || '用户';
+            }
+        });
+    </script>
+</body>
+</html>
