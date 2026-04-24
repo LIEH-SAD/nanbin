@@ -58,8 +58,10 @@
                     
                     <a href="blacklist.html" class="nav-link"><i class="fa-solid fa-ban mr-1"></i>黑名单</a>
                     <a href="index.html" class="nav-link"><i class="fa-solid fa-download mr-1"></i>下载</a>
-                    <!-- 修复音频标签：移除autoplay（避免报错），修正preload属性，增加控制按钮 -->
-                    <audio src="https://cik07-cos.7moor-fs2.com/im/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/a6f7e48488fadb23/张韶涵,HOYO-MiX - 昔涟.mp3" autoplay loop preload="auto" id="bg-audio"></audio>
+                    <!-- 新增：服务器地铁线路图 导航按钮 -->
+                    <a href="http://160.202.238.82:44326" target="_blank" class="nav-link"><i class="fa-solid fa-subway mr-1"></i>服务器地铁线路图</a>
+                    
+                    <audio src="https://cik07-cos.7moor-fs2.com/im/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/a6f7e48488fadb23/张韶涵,HOYO-MiX - 昔涟.mp3" loop preload="auto" id="bg-audio"></audio>
                     <button class="nav-link p-2" id="audio-toggle">
                         <i class="fa-solid fa-play mr-1"></i>播放音乐
                     </button>
@@ -88,7 +90,9 @@
                 <div class="flex flex-col space-y-1 py-2">
                     <a href="blacklist.html" class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded"><i class="fa-solid fa-ban mr-2"></i>黑名单</a>
                     <a href="index.html" class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded"><i class="fa-solid fa-download mr-2"></i>下载</a>
-                    <!-- 移动端音乐控制 -->
+                    <!-- 新增：移动端服务器地铁线路图按钮 -->
+                    <a href="http://160.202.238.82:44326" target="_blank" class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded"><i class="fa-solid fa-subway mr-2"></i>服务器地铁线路图</a>
+                    
                     <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded flex items-center" id="mobile-audio-toggle">
                         <i class="fa-solid fa-play mr-2"></i>播放音乐
                     </button>
@@ -202,8 +206,9 @@
             <p class="mb-2">&copy; 2026 LIEH-SAD 版权所有</p>
             <p class="text-gray-400 text-sm">
                 <a href="blacklist.html" class="hover:text-primary transition-colors duration-200">黑名单</a> | 
-                <a href="index.html" class="hover:text-primary transition-colors duration-200">下载中心</a>
-                <!-- 移除多余的 | 符号 -->
+                <a href="index.html" class="hover:text-primary transition-colors duration-200">下载中心</a> |
+                <!-- 底部新增线路图入口 -->
+                <a href="http://160.202.238.82:44326" target="_blank" class="hover:text-primary transition-colors duration-200">服务器地铁线路图</a>
             </p>
         </div>
     </footer>
