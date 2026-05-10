@@ -31,6 +31,15 @@
         .card-hover {
             @apply hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
         }
+        .search-mode-btn {
+            @apply px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-100 rounded-lg transition-all;
+        }
+        .search-mode-btn.active {
+            @apply bg-primary text-white shadow-sm hover:bg-primary/90;
+        }
+        .search-mode-wrapper {
+            @apply flex items-center gap-1 bg-gray-100 rounded-lg p-1;
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -45,13 +54,21 @@
                     </a>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-2">
+                <div class="hidden md:flex items-center space-x-3">
+                    <div class="search-mode-wrapper">
+                        <button id="search-mode-ai" class="search-mode-btn active">
+                            <i class="fa-solid fa-robot mr-1"></i>AI
+                        </button>
+                        <button id="search-mode-bing" class="search-mode-btn">
+                            <i class="fa-brands fa-edge mr-1"></i>必应
+                        </button>
+                    </div>
                     <div class="relative">
                         <input 
                             type="text" 
                             id="search-input"
-                            placeholder="搜索内容..." 
-                            class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary w-64"
+                            placeholder="输入搜索内容..." 
+                            class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary w-64"
                         >
                         <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer" id="desktop-search-icon"></i>
                     </div>
@@ -77,14 +94,24 @@
         
         <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
             <div class="container mx-auto px-4 py-2">
-                <div class="relative my-2">
-                    <input 
-                        type="text" 
-                        id="mobile-search-input"
-                        placeholder="搜索内容..." 
-                        class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary w-full"
-                    >
-                    <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer" id="mobile-search-icon"></i>
+                <div class="relative my-2 flex flex-col gap-2">
+                    <div class="search-mode-wrapper">
+                        <button id="mobile-search-mode-ai" class="search-mode-btn active flex-1">
+                            <i class="fa-solid fa-robot mr-1"></i>AI
+                        </button>
+                        <button id="mobile-search-mode-bing" class="search-mode-btn flex-1">
+                            <i class="fa-brands fa-edge mr-1"></i>必应
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="mobile-search-input"
+                            placeholder="输入搜索内容..." 
+                            class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary w-full"
+                        >
+                        <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer" id="mobile-search-icon"></i>
+                    </div>
                 </div>
                 
                 <div class="flex flex-col space-y-1 py-2">
@@ -214,6 +241,7 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
         // 移动端菜单控制（增加点击外部关闭）
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -254,10 +282,46 @@
             }
         }
         
-        // 搜索执行函数
+        // AI搜索按钮点击 - 直接跳转到AI对话
+        document.getElementById('search-mode-ai').addEventListener('click', () => {
+            const input = document.getElementById('search-input');
+            if (input && input.value.trim()) {
+                const aiUrl = `nanbinai.html?search=${encodeURIComponent(input.value.trim())}`;
+                window.location.href = aiUrl;
+            }
+        });
+        
+        // 必应搜索按钮点击 - 直接打开必应搜索
+        document.getElementById('search-mode-bing').addEventListener('click', () => {
+            const input = document.getElementById('search-input');
+            if (input && input.value.trim()) {
+                const searchUrl = `https://cn.bing.com/search?q=${encodeURIComponent(input.value.trim())}`;
+                window.open(searchUrl, '_blank');
+            }
+        });
+        
+        // 移动端AI搜索按钮
+        document.getElementById('mobile-search-mode-ai').addEventListener('click', () => {
+            const input = document.getElementById('mobile-search-input');
+            if (input && input.value.trim()) {
+                const aiUrl = `nanbinai.html?search=${encodeURIComponent(input.value.trim())}`;
+                window.location.href = aiUrl;
+            }
+        });
+        
+        // 移动端必应搜索按钮
+        document.getElementById('mobile-search-mode-bing').addEventListener('click', () => {
+            const input = document.getElementById('mobile-search-input');
+            if (input && input.value.trim()) {
+                const searchUrl = `https://cn.bing.com/search?q=${encodeURIComponent(input.value.trim())}`;
+                window.open(searchUrl, '_blank');
+            }
+        });
+        
+        // 默认搜索（回车或点击图标）- 使用AI模式
         function executeSearch(keyword) {
-            const searchUrl = `https://cn.bing.com/search?q=${encodeURIComponent(keyword)}`;
-            window.open(searchUrl, '_blank');
+            const aiUrl = `nanbinai.html?search=${encodeURIComponent(keyword)}`;
+            window.location.href = aiUrl;
         }
         
         // 绑定搜索事件
@@ -302,6 +366,7 @@
         // 绑定音频控制按钮
         audioToggle.addEventListener('click', toggleAudio);
         mobileAudioToggle.addEventListener('click', toggleAudio);
+        });
     </script>
 </body>
 </html>
