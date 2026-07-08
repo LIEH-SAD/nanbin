@@ -1,372 +1,74 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nanbin工作室 - 创意驱动，技术赋能</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#165DFF',
-                        secondary: '#6B7280',
-                        dark: '#1F2937',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <!-- 补充缺失的样式 -->
-    <style>
-        .nav-link {
-            @apply px-4 py-2 text-gray-700 hover:text-primary hover:bg-gray-100 rounded transition-colors duration-200;
-        }
-        .card-hover {
-            @apply hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
-        }
-        .search-mode-btn {
-            @apply px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-100 rounded-lg transition-all;
-        }
-        .search-mode-btn.active {
-            @apply bg-primary text-white shadow-sm hover:bg-primary/90;
-        }
-        .search-mode-wrapper {
-            @apply flex items-center gap-1 bg-gray-100 rounded-lg p-1;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nanbin Studio 南滨工作室 — 数字产品设计、品牌策略与技术创新。">
+  <title>Nanbin Studio · 南滨工作室</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- 头部导航 -->
-    <header class="sticky top-0 z-50 bg-white shadow-sm">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <a href="/" class="text-2xl font-bold text-primary flex items-center">
-                        <i class="fa-solid fa-code mr-2"></i>
-                        Nanbin工作室
-                    </a>
-                </div>
-                
-                <div class="hidden md:flex items-center space-x-3">
-                    <div class="search-mode-wrapper">
-                        <button id="search-mode-ai" class="search-mode-btn active">
-                            <i class="fa-solid fa-robot mr-1"></i>AI
-                        </button>
-                        <button id="search-mode-bing" class="search-mode-btn">
-                            <i class="fa-brands fa-edge mr-1"></i>必应
-                        </button>
-                    </div>
-                    <div class="relative">
-                        <input 
-                            type="text" 
-                            id="search-input"
-                            placeholder="输入搜索内容..." 
-                            class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary w-64"
-                        >
-                        <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer" id="desktop-search-icon"></i>
-                    </div>
-                    
-                    <a href="blacklist.html" class="nav-link"><i class="fa-solid fa-ban mr-1"></i>黑名单</a>
-                    <a href="index.html" class="nav-link"><i class="fa-solid fa-download mr-1"></i>下载</a>
-                    <!-- 新增：服务器地铁线路图 导航按钮 -->
-                    <a href="http://160.202.238.82:44326" target="_blank" class="nav-link"><i class="fa-solid fa-subway mr-1"></i>服务器地铁线路图</a>
-                    
-                    <audio src="https://music.163.com/song/media/outer/url?id=3316968660.mp3" loop preload="auto" id="bg-audio"></audio>
-                    <button class="nav-link p-2" id="audio-toggle">
-                        <i class="fa-solid fa-play mr-1"></i>播放音乐
-                    </button>
-                </div>
-                
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary">
-                        <i class="fa-solid fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
+<body>
+
+  <!-- ============================================================
+       导航栏
+  ============================================================ -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container">
+      <a href="#" class="navbar-logo">
+        <span class="logo-icon">N</span>
+        <span>Nanbin Studio</span>
+      </a>
+      <nav class="navbar-links" id="navLinks" role="navigation" aria-label="主导航">
+        <a href="#showcase">案例</a>
+      </nav>
+      <button class="navbar-toggle" id="navToggle" aria-label="切换菜单" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="carousel">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- 由 JS 动态渲染 -->
         </div>
-        
-        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
-            <div class="container mx-auto px-4 py-2">
-                <div class="relative my-2 flex flex-col gap-2">
-                    <div class="search-mode-wrapper">
-                        <button id="mobile-search-mode-ai" class="search-mode-btn active flex-1">
-                            <i class="fa-solid fa-robot mr-1"></i>AI
-                        </button>
-                        <button id="mobile-search-mode-bing" class="search-mode-btn flex-1">
-                            <i class="fa-brands fa-edge mr-1"></i>必应
-                        </button>
-                    </div>
-                    <div class="relative">
-                        <input 
-                            type="text" 
-                            id="mobile-search-input"
-                            placeholder="输入搜索内容..." 
-                            class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary w-full"
-                        >
-                        <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer" id="mobile-search-icon"></i>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col space-y-1 py-2">
-                    <a href="blacklist.html" class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded"><i class="fa-solid fa-ban mr-2"></i>黑名单</a>
-                    <a href="index.html" class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded"><i class="fa-solid fa-download mr-2"></i>下载</a>
-                    <!-- 新增：移动端服务器地铁线路图按钮 -->
-                    <a href="http://160.202.238.82:44326" target="_blank" class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded"><i class="fa-solid fa-subway mr-2"></i>服务器地铁线路图</a>
-                    
-                    <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary rounded flex items-center" id="mobile-audio-toggle">
-                        <i class="fa-solid fa-play mr-2"></i>播放音乐
-                    </button>
-                </div>
-            </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="carouselPrev" aria-label="上一张">‹</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="carouselNext" aria-label="下一张">›</button>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <!-- 主内容区（语义化优化） -->
-    <main>
-        <section class="bg-primary/10 py-16">
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-dark mb-4">Nanbin工作室</h1>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">专注于创意开发与技术创新，打造有温度的数字产品</p>
-                <div class="mt-8">
-                    <a href="#projects" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors duration-200 inline-flex items-center">
-                        <i class="fa-solid fa-rocket mr-2"></i>
-                        查看我们的项目
-                    </a>
-                </div>
-            </div>
-        </section>
+  <section class="section" id="showcase">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">精选案例</h2>
+        <p class="section-desc">每一个项目都是我们对品质的承诺</p>
+      </div>
+      <div class="showcase-grid" id="showcaseGrid">
+        <!-- 由 JS 渲染 -->
+      </div>
+    </div>
+  </section>
 
-        <section id="projects" class="py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">核心项目</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-xl shadow p-6 card-hover">
-                        <div class="text-primary text-4xl mb-4">
-                            <i class="fa-solid fa-cubes"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">南滨创意模组</h3>
-                        <p class="text-gray-600 mb-4">基于Fabric的创意型游戏模组，为游戏体验增添更多可能性。</p>
-                        <a href="https://modrinth.com/mod/nanbin-create-mod" target="_blank" class="text-primary hover:text-primary/80 inline-flex items-center font-medium">
-                            <i class="fa-solid fa-download mr-1"></i>
-                            前往下载
-                            <i class="fa-solid fa-external-link ml-1 text-xs"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl shadow p-6 card-hover">
-                        <div class="text-primary text-4xl mb-4">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Nanbin PE项目</h3>
-                        <p class="text-gray-600 mb-4">面向移动平台的轻量化应用项目，专注于移动端用户体验优化。</p>
-                        <a href="https://www.123865.com/s/PKCujv-uJImh" class="text-primary hover:text-primary/80 inline-flex items-center font-medium">
-                            <i class="fa-solid fa-download mr-1"></i>
-                            前往下载
-                            <i class="fa-solid fa-external-link ml-1 text-xs"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl shadow p-6 card-hover">
-                        <div class="text-primary text-4xl mb-4">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">南滨智慧教育项目</h3>
-                        <p class="text-gray-600 mb-4">结合现代技术的教育解决方案，提升教学效率与学习体验。</p>
-                        <a href="https://share.feijipan.com/s/ha1crQzY" class="text-primary hover:text-primary/80 inline-flex items-center font-medium">
-                            <i class="fa-solid fa-download mr-1"></i>
-                            前往下载
-                            <i class="fa-solid fa-external-link ml-1 text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid" id="footerGrid">
+        <!-- 由 JS 渲染 -->
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Nanbin Studio. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
 
-        <section class="bg-gray-100 py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">支持与关注我们</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="bg-white rounded-xl shadow p-6">
-                        <h3 class="text-xl font-semibold mb-4 flex items-center">
-                            <i class="fa-solid fa-heart text-red-500 mr-2"></i>
-                            赞助我们
-                        </h3>
-                        <p class="text-gray-600 mb-4">您的支持是我们持续开发的动力，感谢每一位赞助者！</p>
-                        <a href="https://afdian.com/a/sadliehbilibili" target="_blank" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200 inline-flex items-center">
-                            <i class="fa-solid fa-coins mr-2"></i>
-                            前往爱发电赞助
-                        </a>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl shadow p-6">
-                        <h3 class="text-xl font-semibold mb-4 flex items-center">
-                            <i class="fa-solid fa-share-nodes mr-2 text-primary"></i>
-                            关注我们的平台
-                        </h3>
-                        <div class="space-y-3 text-gray-600">
-                            <a href="https://space.bilibili.com/1336760259" target="_blank" class="flex items-center hover:text-primary transition-colors duration-200">
-                                <i class="fa-brands fa-bilibili text-[#FB7299] w-6 text-center text-xl mr-2"></i>
-                                B站：Nanbin工作室
-                            </a>
-                            <a href="https://www.mtrbbs.top/space-uid-1289.html" target="_blank" class="flex items-center hover:text-primary transition-colors duration-200">
-                                <i class="fa-solid fa-globe w-6 text-center text-xl mr-2"></i>
-                                MTRBBS：Nanbin工作室
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-dark text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p class="mb-2">&copy; 2026 LIEH-SAD 版权所有</p>
-            <p class="text-gray-400 text-sm">
-                <a href="blacklist.html" class="hover:text-primary transition-colors duration-200">黑名单</a> | 
-                <a href="index.html" class="hover:text-primary transition-colors duration-200">下载中心</a> |
-                <!-- 底部新增线路图入口 -->
-                <a href="http://160.202.238.82:44326" target="_blank" class="hover:text-primary transition-colors duration-200">服务器地铁线路图</a>
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-        // 移动端菜单控制（增加点击外部关闭）
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // 点击页面其他区域关闭移动端菜单
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
-        
-        // 搜索功能优化：支持回车+点击图标搜索
-        function handleSearch(inputId, iconId) {
-            const input = document.getElementById(inputId);
-            const icon = document.getElementById(iconId);
-            
-            // 回车搜索
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' && input.value.trim()) {
-                    executeSearch(input.value.trim());
-                    input.value = '';
-                }
-            });
-            
-            // 点击图标搜索
-            if (icon) {
-                icon.addEventListener('click', () => {
-                    if (input.value.trim()) {
-                        executeSearch(input.value.trim());
-                        input.value = '';
-                    }
-                });
-            }
-        }
-        
-        // AI搜索按钮点击 - 直接跳转到AI对话
-        document.getElementById('search-mode-ai').addEventListener('click', () => {
-            const input = document.getElementById('search-input');
-            if (input && input.value.trim()) {
-                const aiUrl = `nanbinai.html?search=${encodeURIComponent(input.value.trim())}`;
-                window.location.href = aiUrl;
-            }
-        });
-        
-        // 必应搜索按钮点击 - 直接打开必应搜索
-        document.getElementById('search-mode-bing').addEventListener('click', () => {
-            const input = document.getElementById('search-input');
-            if (input && input.value.trim()) {
-                const searchUrl = `https://cn.bing.com/search?q=${encodeURIComponent(input.value.trim())}`;
-                window.open(searchUrl, '_blank');
-            }
-        });
-        
-        // 移动端AI搜索按钮
-        document.getElementById('mobile-search-mode-ai').addEventListener('click', () => {
-            const input = document.getElementById('mobile-search-input');
-            if (input && input.value.trim()) {
-                const aiUrl = `nanbinai.html?search=${encodeURIComponent(input.value.trim())}`;
-                window.location.href = aiUrl;
-            }
-        });
-        
-        // 移动端必应搜索按钮
-        document.getElementById('mobile-search-mode-bing').addEventListener('click', () => {
-            const input = document.getElementById('mobile-search-input');
-            if (input && input.value.trim()) {
-                const searchUrl = `https://cn.bing.com/search?q=${encodeURIComponent(input.value.trim())}`;
-                window.open(searchUrl, '_blank');
-            }
-        });
-        
-        // 默认搜索（回车或点击图标）- 使用AI模式
-        function executeSearch(keyword) {
-            const aiUrl = `nanbinai.html?search=${encodeURIComponent(keyword)}`;
-            window.location.href = aiUrl;
-        }
-        
-        // 绑定搜索事件
-        handleSearch('search-input', 'desktop-search-icon');
-        handleSearch('mobile-search-input', 'mobile-search-icon');
-        
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // 音频播放控制（解决autoplay问题）
-        const audio = document.getElementById('bg-audio');
-        const audioToggle = document.getElementById('audio-toggle');
-        const mobileAudioToggle = document.getElementById('mobile-audio-toggle');
-        
-        // 统一音频控制函数
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play().catch(err => {
-                    alert('音频播放需要您的交互，请点击页面后重试！');
-                    console.log('音频播放失败：', err);
-                });
-                audioToggle.innerHTML = '<i class="fa-solid fa-pause mr-1"></i>暂停音乐';
-                mobileAudioToggle.innerHTML = '<i class="fa-solid fa-pause mr-2"></i>暂停音乐';
-            } else {
-                audio.pause();
-                audioToggle.innerHTML = '<i class="fa-solid fa-play mr-1"></i>播放音乐';
-                mobileAudioToggle.innerHTML = '<i class="fa-solid fa-play mr-2"></i>播放音乐';
-            }
-        }
-        
-        // 绑定音频控制按钮
-        audioToggle.addEventListener('click', toggleAudio);
-        mobileAudioToggle.addEventListener('click', toggleAudio);
-        });
-    </script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
