@@ -33,7 +33,7 @@ const SITE_DATA = {
       title: 'Nanbin PE 系统<br><span class="highlight">更懂你的 Windows PE</span>',
       desc: '深耕多年的技术积累，打造高效、稳定、更懂消费者的 PE 系统。',
       btnText: '前去下载',
-      btnLink: 'https://www.123865.com/s/PKCujv-uJImh',
+      btnLink: 'https://1827870760.share.123pan.cn/123pan/PKCujv-cue4h',
       btn2Text: '前去支持',
       btn2Link: 'https://afdian.com/a/sadliehbilibili',
       image: 'https://free.picui.cn/free/2026/07/08/6a4da2b66ac38.png'
