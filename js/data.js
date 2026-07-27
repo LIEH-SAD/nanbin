@@ -68,9 +68,7 @@ const SITE_DATA = {
       {
         title: '联系方式',
         links: [
-          { text: 'sadlieh@hotmail.com', href: '#' },
-          { text: 'None', href: '#' },
-          { text: '重庆市沙坪坝区纵五路', href: '#' }
+          { text: 'sadlieh@hotmail.com', href: '#' }
         ]
       }
     ],
