@@ -1,0 +1,42 @@
+{
+  "site.title": "Nanbin工作室",
+  "site.desc": "Nanbin Studio 南濱工作室 — 數位產品設計、品牌策略與技術創新。",
+
+  "nav.showcase": "案例",
+
+  "hero.prev": "上一張",
+  "hero.next": "下一張",
+  "hero.slide.aria": "第{i}張投影片",
+
+  "showcase.tag": "作品集",
+  "showcase.title": "精選案例",
+  "showcase.desc": "每一個項目都是我們對品質的承諾",
+
+  "footer.copyright": "© 2026 Nanbin Studio. 保留所有權利。",
+
+  "hero.s1.badge": "超高創意",
+  "hero.s1.title": "模組「南濱創意」<br><span class=\"highlight\">Nanbin Create Mod</span>",
+  "hero.s1.desc": "基於使用者體驗深度優化",
+  "hero.s1.btn1": "前往下載",
+  "hero.s1.btn2": "開源地址",
+
+  "hero.s2.badge": "創新開發",
+  "hero.s2.title": "模組「豐年」<br><span class=\"highlight\">Verdant Harvest</span>",
+  "hero.s2.desc": "深度洞察市場趨勢與使用者需求。",
+  "hero.s2.btn1": "前往下載",
+  "hero.s2.btn2": "開源倉庫",
+
+  "hero.s3.badge": "強硬技術",
+  "hero.s3.title": "Nanbin PE 系統<br><span class=\"highlight\">更懂你的 Windows PE</span>",
+  "hero.s3.desc": "深耕多年的技術積累，打造高效、穩定、更懂消費者的 PE 系統。",
+  "hero.s3.btn1": "前往下載",
+  "hero.s3.btn2": "前往支持",
+
+  "footer.desc": "用創意與科技重塑數位體驗。Nanbin Studio — 南濱創意工作室，致力於為品牌創造持久的價值。",
+  "footer.col.about": "關於",
+  "footer.col.contact": "聯絡方式",
+  "footer.about.intro": "工作室介紹",
+  "footer.about.join": "加入我們",
+  "footer.about.news": "新聞動態",
+  "footer.about.privacy": "隱私政策"
+}

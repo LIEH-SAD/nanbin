@@ -1,0 +1,42 @@
+{
+  "site.title": "Nanbin 스튜디오",
+  "site.desc": "Nanbin Studio(난빈 스튜디오) — 디지털 제품 디자인, 브랜드 전략 및 기술 혁신.",
+
+  "nav.showcase": "포트폴리오",
+
+  "hero.prev": "이전 슬라이드",
+  "hero.next": "다음 슬라이드",
+  "hero.slide.aria": "{i}번째 슬라이드",
+
+  "showcase.tag": "포트폴리오",
+  "showcase.title": "엄선된 사례",
+  "showcase.desc": "모든 프로젝트는 우리의 품질에 대한 약속입니다",
+
+  "footer.copyright": "© 2026 Nanbin Studio. All rights reserved.",
+
+  "hero.s1.badge": "뛰어난 창의성",
+  "hero.s1.title": "모드 「난빈 크리에이트」<br><span class=\"highlight\">Nanbin Create Mod</span>",
+  "hero.s1.desc": "사용자 경험 기반의 깊이 있는 최적화",
+  "hero.s1.btn1": "다운로드",
+  "hero.s1.btn2": "오픈소스",
+
+  "hero.s2.badge": "혁신적 개발",
+  "hero.s2.title": "모드 「풍년」<br><span class=\"highlight\">Verdant Harvest</span>",
+  "hero.s2.desc": "시장 트렌드와 사용자 니즈에 대한 깊은 통찰.",
+  "hero.s2.btn1": "다운로드",
+  "hero.s2.btn2": "저장소",
+
+  "hero.s3.badge": "강력한 기술",
+  "hero.s3.title": "Nanbin PE 시스템<br><span class=\"highlight\">당신에게 더 잘 맞는 Windows PE</span>",
+  "hero.s3.desc": "다년간의 기술 축적으로 효율적이고 안정적인 PE 시스템을 만듭니다.",
+  "hero.s3.btn1": "다운로드",
+  "hero.s3.btn2": "후원하기",
+
+  "footer.desc": "창의성과 기술로 디지털 경험을 재편합니다. Nanbin Studio — 난빈 크리에이티브 스튜디오는 브랜드에 지속 가능한 가치를 만듭니다.",
+  "footer.col.about": "소개",
+  "footer.col.contact": "연락처",
+  "footer.about.intro": "스튜디오 소개",
+  "footer.about.join": "채용",
+  "footer.about.news": "뉴스",
+  "footer.about.privacy": "개인정보 처리방침"
+}

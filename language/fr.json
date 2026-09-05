@@ -1,0 +1,42 @@
+{
+  "site.title": "Studio Nanbin",
+  "site.desc": "Nanbin Studio — Conception de produits numériques, stratégie de marque et innovation technologique.",
+
+  "nav.showcase": "Réalisations",
+
+  "hero.prev": "Diapositive précédente",
+  "hero.next": "Diapositive suivante",
+  "hero.slide.aria": "Diapositive {i}",
+
+  "showcase.tag": "Portfolio",
+  "showcase.title": "Projets sélectionnés",
+  "showcase.desc": "Chaque projet est notre promesse de qualité",
+
+  "footer.copyright": "© 2026 Nanbin Studio. Tous droits réservés.",
+
+  "hero.s1.badge": "Créativité exceptionnelle",
+  "hero.s1.title": "Mod « Nanbin Create »<br><span class=\"highlight\">Nanbin Create Mod</span>",
+  "hero.s1.desc": "Optimisation approfondie fondée sur l'expérience utilisateur",
+  "hero.s1.btn1": "Télécharger",
+  "hero.s1.btn2": "Open source",
+
+  "hero.s2.badge": "Développement innovant",
+  "hero.s2.title": "Mod « Verdant Harvest »<br><span class=\"highlight\">Verdant Harvest</span>",
+  "hero.s2.desc": "Une compréhension fine des tendances du marché et des besoins des utilisateurs.",
+  "hero.s2.btn1": "Télécharger",
+  "hero.s2.btn2": "Dépôt source",
+
+  "hero.s3.badge": "Technologie robuste",
+  "hero.s3.title": "Système Nanbin PE<br><span class=\"highlight\">Un Windows PE pensé pour vous</span>",
+  "hero.s3.desc": "Des années d'expertise pour un système PE efficace, stable et proche des utilisateurs.",
+  "hero.s3.btn1": "Télécharger",
+  "hero.s3.btn2": "Nous soutenir",
+
+  "footer.desc": "Réinventer l'expérience numérique par la créativité et la technologie. Nanbin Studio — studio créatif dédié à la création de valeur durable pour les marques.",
+  "footer.col.about": "À propos",
+  "footer.col.contact": "Contact",
+  "footer.about.intro": "Le studio",
+  "footer.about.join": "Rejoignez-nous",
+  "footer.about.news": "Actualités",
+  "footer.about.privacy": "Politique de confidentialité"
+}

@@ -1,0 +1,42 @@
+{
+  "site.title": "Nanbin Studio",
+  "site.desc": "Nanbin Studio — Digital product design, brand strategy and technical innovation.",
+
+  "nav.showcase": "Showcase",
+
+  "hero.prev": "Previous slide",
+  "hero.next": "Next slide",
+  "hero.slide.aria": "Slide {i}",
+
+  "showcase.tag": "Portfolio",
+  "showcase.title": "Featured Works",
+  "showcase.desc": "Every project is our promise of quality",
+
+  "footer.copyright": "© 2026 Nanbin Studio. All rights reserved.",
+
+  "hero.s1.badge": "Superb Creativity",
+  "hero.s1.title": "Nanbin Create Mod<br><span class=\"highlight\">Minecraft Mod</span>",
+  "hero.s1.desc": "Deeply optimized based on user experience",
+  "hero.s1.btn1": "Download",
+  "hero.s1.btn2": "Open Source",
+
+  "hero.s2.badge": "Innovative Development",
+  "hero.s2.title": "Verdant Harvest<br><span class=\"highlight\">Minecraft Mod</span>",
+  "hero.s2.desc": "Deep insight into market trends and user needs.",
+  "hero.s2.btn1": "Download",
+  "hero.s2.btn2": "Source Repo",
+
+  "hero.s3.badge": "Strong Technology",
+  "hero.s3.title": "Nanbin PE System<br><span class=\"highlight\">A Windows PE Made for You</span>",
+  "hero.s3.desc": "Years of technical expertise build an efficient, stable and consumer-friendly PE system.",
+  "hero.s3.btn1": "Download",
+  "hero.s3.btn2": "Support Us",
+
+  "footer.desc": "Reshaping digital experiences with creativity and technology. Nanbin Studio is dedicated to creating lasting value for brands.",
+  "footer.col.about": "About",
+  "footer.col.contact": "Contact",
+  "footer.about.intro": "About Us",
+  "footer.about.join": "Join Us",
+  "footer.about.news": "News",
+  "footer.about.privacy": "Privacy Policy"
+}

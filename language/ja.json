@@ -1,0 +1,42 @@
+{
+  "site.title": "Nanbinスタジオ",
+  "site.desc": "Nanbin Studio（南浜スタジオ）— デジタルプロダクトデザイン、ブランド戦略、技術イノベーション。",
+
+  "nav.showcase": "実績",
+
+  "hero.prev": "前のスライド",
+  "hero.next": "次のスライド",
+  "hero.slide.aria": "スライド{i}",
+
+  "showcase.tag": "ポートフォリオ",
+  "showcase.title": "選りすぐりの実績",
+  "showcase.desc": "一つひとつのプロジェクトが、私たちの品質への誓いです",
+
+  "footer.copyright": "© 2026 Nanbin Studio. All rights reserved.",
+
+  "hero.s1.badge": "圧倒的クリエイティビティ",
+  "hero.s1.title": "Mod「南浜クリエイト」<br><span class=\"highlight\">Nanbin Create Mod</span>",
+  "hero.s1.desc": "ユーザー体験に基づく深い最適化",
+  "hero.s1.btn1": "ダウンロード",
+  "hero.s1.btn2": "オープンソース",
+
+  "hero.s2.badge": "革新的開発",
+  "hero.s2.title": "Mod「豊年」<br><span class=\"highlight\">Verdant Harvest</span>",
+  "hero.s2.desc": "市場トレンドとユーザーニーズを深く洞察。",
+  "hero.s2.btn1": "ダウンロード",
+  "hero.s2.btn2": "ソースリポジトリ",
+
+  "hero.s3.badge": "強力なテクノロジー",
+  "hero.s3.title": "Nanbin PE システム<br><span class=\"highlight\">あなたを知り尽くした Windows PE</span>",
+  "hero.s3.desc": "長年の技術の積み重ねで、高速・安定・使いやすい PE システムを。",
+  "hero.s3.btn1": "ダウンロード",
+  "hero.s3.btn2": "サポート",
+
+  "footer.desc": "クリエイティビティとテクノロジーでデジタル体験を再構築する。Nanbin Studio — 南浜クリエイティブスタジオは、ブランドに持続的な価値を創造します。",
+  "footer.col.about": "About",
+  "footer.col.contact": "お問い合わせ",
+  "footer.about.intro": "スタジオ紹介",
+  "footer.about.join": "採用情報",
+  "footer.about.news": "ニュース",
+  "footer.about.privacy": "プライバシーポリシー"
+}

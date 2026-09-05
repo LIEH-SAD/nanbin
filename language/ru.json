@@ -1,0 +1,42 @@
+{
+  "site.title": "Студия Nanbin",
+  "site.desc": "Nanbin Studio — цифровой дизайн продуктов, бренд-стратегия и технологические инновации.",
+
+  "nav.showcase": "Проекты",
+
+  "hero.prev": "Предыдущий слайд",
+  "hero.next": "Следующий слайд",
+  "hero.slide.aria": "Слайд {i}",
+
+  "showcase.tag": "Портфолио",
+  "showcase.title": "Избранные проекты",
+  "showcase.desc": "Каждый проект — наше обещание качества",
+
+  "footer.copyright": "© 2026 Nanbin Studio. Все права защищены.",
+
+  "hero.s1.badge": "Выдающаяся креативность",
+  "hero.s1.title": "Мод «Наньбинь Криэйт»<br><span class=\"highlight\">Nanbin Create Mod</span>",
+  "hero.s1.desc": "Глубокая оптимизация на основе пользовательского опыта",
+  "hero.s1.btn1": "Скачать",
+  "hero.s1.btn2": "Открытый код",
+
+  "hero.s2.badge": "Инновационная разработка",
+  "hero.s2.title": "Мод «Богатый урожай»<br><span class=\"highlight\">Verdant Harvest</span>",
+  "hero.s2.desc": "Глубокое понимание рыночных тенденций и потребностей пользователей.",
+  "hero.s2.btn1": "Скачать",
+  "hero.s2.btn2": "Репозиторий",
+
+  "hero.s3.badge": "Мощные технологии",
+  "hero.s3.title": "Система Nanbin PE<br><span class=\"highlight\">Windows PE, который понимает вас</span>",
+  "hero.s3.desc": "Многолетний технический опыт — эффективная, стабильная и удобная PE-система.",
+  "hero.s3.btn1": "Скачать",
+  "hero.s3.btn2": "Поддержать",
+
+  "footer.desc": "Переосмысляем цифровой опыт с помощью креатива и технологий. Nanbin Studio — креативная студия, создающая устойчивую ценность для брендов.",
+  "footer.col.about": "О нас",
+  "footer.col.contact": "Контакты",
+  "footer.about.intro": "О студии",
+  "footer.about.join": "Присоединиться",
+  "footer.about.news": "Новости",
+  "footer.about.privacy": "Политика конфиденциальности"
+}

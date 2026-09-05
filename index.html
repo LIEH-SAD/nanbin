@@ -3,24 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nanbin Studio 南滨工作室 — 数字产品设计、品牌策略与技术创新。">
+  <meta name="description" content="Nanbin Studio" data-i18n-content="site.desc">
   <link rel="icon" href="https://free.picui.cn/free/2026/07/09/6a4f9c5da363d.png" type="image/x-icon">
-  <title>Nanbin Studio · 南滨工作室</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title data-i18n="site.title">Nanbin工作室</title>
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
   <!-- ============================================================
-       导航栏
+       Navbar (Liquid Glass capsule)
   ============================================================ -->
   <header class="navbar" id="navbar" role="banner">
     <div class="container">
       <a href="#" class="navbar-logo">
-        <span class="logo-icon">N</span>
+        <span class="logo-icon"><img src="https://free.picui.cn/free/2026/07/09/6a4f9c5da363d.png" alt="Nanbin Studio 图标"></span>
         <span>Nanbin Studio</span>
       </a>
       <nav class="navbar-links" id="navLinks" role="navigation" aria-label="主导航">
-        <a href="#showcase">案例</a>
+        <a href="#showcase" data-i18n="nav.showcase">案例</a>
+        <div class="lang-select" id="langSelect">
+          <button class="lang-switch" id="langButton" aria-haspopup="true" aria-expanded="false">Language</button>
+          <div class="lang-menu" id="langMenu" role="menu"></div>
+        </div>
       </nav>
       <button class="navbar-toggle" id="navToggle" aria-label="切换菜单" aria-expanded="false">
         <span></span>
@@ -30,46 +34,56 @@
     </div>
   </header>
 
+  <!-- ============================================================
+       Hero carousel (background image blurred as module backdrop)
+  ============================================================ -->
   <section class="hero" id="hero">
     <div class="container">
       <div class="carousel">
         <div class="carousel-track" id="carouselTrack">
-          <!-- 由 JS 动态渲染 -->
+          <!-- Rendered dynamically by JS -->
         </div>
         <div class="carousel-controls">
-          <button class="carousel-btn" id="carouselPrev" aria-label="上一张">‹</button>
+          <button class="carousel-btn" id="carouselPrev" aria-label="上一张" data-i18n-attr="aria-label:hero.prev">‹</button>
           <div class="carousel-dots" id="carouselDots"></div>
-          <button class="carousel-btn" id="carouselNext" aria-label="下一张">›</button>
+          <button class="carousel-btn" id="carouselNext" aria-label="下一张" data-i18n-attr="aria-label:hero.next">›</button>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============================================================
+       Showcase
+  ============================================================ -->
   <section class="section" id="showcase">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Portfolio</span>
-        <h2 class="section-title">精选案例</h2>
-        <p class="section-desc">每一个项目都是我们对品质的承诺</p>
+        <span class="section-tag" data-i18n="showcase.tag">Portfolio</span>
+        <h2 class="section-title" data-i18n="showcase.title">精选案例</h2>
+        <p class="section-desc" data-i18n="showcase.desc">每一个项目都是我们对品质的承诺</p>
       </div>
       <div class="showcase-grid" id="showcaseGrid">
-        <!-- 由 JS 渲染 -->
+        <!-- Rendered dynamically by JS -->
       </div>
     </div>
   </section>
 
+  <!-- ============================================================
+       Footer
+  ============================================================ -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid" id="footerGrid">
-        <!-- 由 JS 渲染 -->
+        <!-- Rendered dynamically by JS -->
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 Nanbin Studio. All rights reserved.</span>
+        <span data-i18n="footer.copyright">&copy; 2026 Nanbin Studio. All rights reserved.</span>
       </div>
     </div>
   </footer>
 
   <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
