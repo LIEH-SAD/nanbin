@@ -41,16 +41,16 @@ const SITE_DATA = {
     }
   ],
 
-  /* ---- Showcase ---- */
-  showcases: [
-    {/*
-      image: 'https://picsum.photos/seed/techvision/600/400',
-      title: 'showcase.item1.title',
-      desc: 'showcase.item1.desc',
-      tags: ['showcase.item1.tag1'],
-      link: 'https://example.com/techvision'
-    */},
-  ],
+  /* ---- Showcase ----
+     Item template (copy into the array, then fill in):
+     {
+       image: 'https://example.com/image.png',
+       title: 'showcase.item1.title',
+       desc: 'showcase.item1.desc',
+       tags: ['showcase.item1.tag1'],
+       link: 'https://example.com/project'
+     } */
+  showcases: [],
 
   /* ---- Footer ---- */
   footer: {

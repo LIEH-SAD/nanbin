@@ -53,6 +53,10 @@ function renderDynamic() {
   }).join('');
   hero.insertBefore(bgLayer, hero.firstChild);
 
+  /* ---- Carousel controls first: data errors further down
+     (e.g. in showcases) must not leave the carousel dead ---- */
+  initCarousel();
+
   /* ---- Showcase cards ---- */
   var showcaseGrid = document.getElementById('showcaseGrid');
   showcaseGrid.innerHTML = D.showcases.map(function (s) {
@@ -81,8 +85,7 @@ function renderDynamic() {
   }).join('');
   footerGrid.innerHTML = footerBrandHtml + footerColsHtml;
 
-  /* ---- Re-init carousel controls & glass touch light for fresh DOM ---- */
-  initCarousel();
+  /* ---- Re-bind glass touch light for fresh DOM ---- */
   bindTouchLight();
 }
 
@@ -127,22 +130,31 @@ function initCarousel() {
   }
   function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
 
-  // Stop the previous auto timer before rebinding
-  if (track._stopAuto) track._stopAuto();
-  track._stopAuto = stopAuto;
+  // Tear down the previous instance first: static buttons (prev/next/track)
+  // survive re-renders, so without this their listeners would stack up
+  // (one click -> N slides, N auto timers fighting each other)
+  if (track._carouselTeardown) track._carouselTeardown();
 
-  nextBtn.addEventListener('click', function () { next(); startAuto(); });
-  prevBtn.addEventListener('click', function () { prev(); startAuto(); });
+  // All listeners share one signal so they can be removed in one call
+  var ac = new AbortController();
+  var signal = ac.signal;
+  nextBtn.addEventListener('click', function () { next(); startAuto(); }, { signal: signal });
+  prevBtn.addEventListener('click', function () { prev(); startAuto(); }, { signal: signal });
   dots.forEach(function (dot) {
     dot.addEventListener('click', function () {
       goTo(parseInt(this.getAttribute('data-index'), 10));
       startAuto();
-    });
+    }, { signal: signal });
   });
 
   // Pause on hover
-  track.addEventListener('mouseenter', stopAuto);
-  track.addEventListener('mouseleave', startAuto);
+  track.addEventListener('mouseenter', stopAuto, { signal: signal });
+  track.addEventListener('mouseleave', startAuto, { signal: signal });
+
+  track._carouselTeardown = function () {
+    ac.abort();
+    stopAuto();
+  };
 
   startAuto();
 }
@@ -207,11 +219,24 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 });
 
 /* ============================================================
-   Bootstrap: first render waits for the i18n dictionary,
-   later language switches re-render automatically
+   Bootstrap: first render waits for the i18n dictionary and runs
+   exactly once; later language switches re-render via "i18n:change"
    ============================================================ */
-document.addEventListener('i18n:ready', renderDynamic);
-document.addEventListener('i18n:change', renderDynamic);
+var firstRenderDone = false;
+function firstRender() {
+  if (firstRenderDone) return;
+  firstRenderDone = true;
+  renderDynamic();
+}
+document.addEventListener('i18n:ready', firstRender);
+document.addEventListener('i18n:change', function () {
+  firstRenderDone = true; // a switch implies the first render already happened
+  renderDynamic();
+});
+/* Defensive: if the ready event fired before main.js registered its listener
+   (possible when fetch resolves from cache between synchronous scripts),
+   render right away instead of waiting for an event that never comes */
+if (window.i18nLang) firstRender();
 
 console.log('%c Nanbin Studio %c Reshaping digital experiences with creativity and technology ',
   'background:#00BFA5;color:white;font-size:14px;font-weight:bold;padding:6px 10px;border-radius:4px 0 0 4px;',

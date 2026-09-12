@@ -154,9 +154,12 @@ function i18nInitSwitcher() {
   });
 }
 
-/* Bootstrap: first load fires "i18n:ready", switches fire "i18n:change" */
+/* Bootstrap: first load fires "i18n:ready", switches fire "i18n:change".
+   Deferred to DOMContentLoaded so listener scripts (main.js) are always
+   registered before the event fires - otherwise a cached fetch can resolve
+   between the synchronous scripts and the event is lost. */
 document.addEventListener('DOMContentLoaded', function () {
   i18nInitSwitcher();
   i18nRenderSwitcher();
+  i18nLoad(i18nDetect(), 'i18n:ready');
 });
-i18nLoad(i18nDetect(), 'i18n:ready');
