@@ -32,7 +32,11 @@
   "hero.s3.btn1": "Herunterladen",
   "hero.s3.btn2": "Unterstützen",
 
-  "footer.desc": "Wir gestalten digitale Erlebnisse neu – mit Kreativität und Technologie. Nanbin Studio — Kreativstudio für nachhaltigen Markennutzen.",
+  "showcase.item1.title": "Minecraft Transit Railway Wiki",
+  "showcase.item1.desc": "Eine basierend Minecraft-Transit-Railway System, die real-time Transportinformationen und einfache Verkehrsmethoden bietet.",
+  "showcase.item1.tag": "MTR",
+
+  "footer.desc": "Wir gestalten digitale Erlebnisse neu - mit Kreativität und Technologie. Nanbin Studio — Kreativstudio für nachhaltigen Markennutzen.",
   "footer.col.about": "Über uns",
   "footer.col.contact": "Kontakt",
   "footer.about.intro": "Studio-Vorstellung",

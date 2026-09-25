@@ -31,6 +31,10 @@
   "hero.s3.desc": "長年の技術の積み重ねで、高速・安定・使いやすい PE システムを。",
   "hero.s3.btn1": "ダウンロード",
   "hero.s3.btn2": "サポート",
+  
+  "showcase.item1.title": "Minecraft Transit Railway Wiki",
+  "showcase.item1.desc": "Minecraft Transit Railway System は、リアルタイムの交通情報と便利な交通方法を提供します。",
+  "showcase.item1.tag": "MTR",
 
   "footer.desc": "クリエイティビティとテクノロジーでデジタル体験を再構築する。Nanbin Studio — 南浜クリエイティブスタジオは、ブランドに持続的な価値を創造します。",
   "footer.col.about": "About",

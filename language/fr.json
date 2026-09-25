@@ -32,6 +32,10 @@
   "hero.s3.btn1": "Télécharger",
   "hero.s3.btn2": "Nous soutenir",
 
+  "showcase.item1.title": "Wiki de la réseau de train Minecraft Minecraft",
+  "showcase.item1.desc": "Un système de train Minecraft qui fournit des informations de transport réelles et des méthodes de transport conviviale.",
+  "showcase.item1.tag": "MTR",
+
   "footer.desc": "Réinventer l'expérience numérique par la créativité et la technologie. Nanbin Studio — studio créatif dédié à la création de valeur durable pour les marques.",
   "footer.col.about": "À propos",
   "footer.col.contact": "Contact",

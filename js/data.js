@@ -41,16 +41,15 @@ const SITE_DATA = {
     }
   ],
 
-  /* ---- Showcase ----
-     Item template (copy into the array, then fill in):
-     {
-       image: 'https://example.com/image.png',
-       title: 'showcase.item1.title',
-       desc: 'showcase.item1.desc',
-       tags: ['showcase.item1.tag1'],
-       link: 'https://example.com/project'
-     } */
-  showcases: [],
+showcases: [
+  {
+    image: 'https://minecrafttransitrailway.com/assets/img/logo.png',
+    title: 'showcase.item1.title',
+    desc: 'showcase.item1.desc',
+    tags: ["showcase.item1.tag"],
+    link: 'https://lieh-sad.github.io/Minecraft-Transit-Railway-Wiki'
+  }
+],
 
   /* ---- Footer ---- */
   footer: {
